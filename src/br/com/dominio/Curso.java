@@ -2,17 +2,16 @@ package br.com.dominio;
 
 public class Curso extends Conteudo {
 
-	private int cargaHoraria;
-		
+	private double cargaHoraria;	
 	
 	public Curso() {
 
 	}
 	
-	public int getCargaHoraria() {
+	public double getCargaHoraria() {
 		return cargaHoraria;
 	}
-	public void setCargaHoraria(int cargaHoraria) {
+	public void setCargaHoraria(double cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
 	}
 	

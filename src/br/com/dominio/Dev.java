@@ -1,14 +1,17 @@
 package br.com.dominio;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
+
 public class Dev {
 	
 	private String nome;
+	public List<Endereco> endereco;
 	private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
 	private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 	
@@ -21,7 +24,7 @@ public class Dev {
 		Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
 		if(conteudo.isPresent()) {
 			this.conteudosConcluidos.add(conteudo.get());
-			this.conteudosInscritos.add(conteudo.get());
+			this.conteudosInscritos.remove(conteudo.get());
 		}else {
 			System.err.println("Você não está cadastrado em nenhum conteúdo!");
 		}
@@ -30,7 +33,6 @@ public class Dev {
 	public double calcularTotalXp() {
 		return this.conteudosConcluidos.stream().mapToDouble(conteudo -> conteudo.calcularXp()).sum();
 	};
-	
 	
 	public String getNome() {
 		return nome;
@@ -52,6 +54,22 @@ public class Dev {
 	public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
 		this.conteudosConcluidos = conteudosConcluidos;
 	}
+	
+	public void adiconarEndereco(Endereco endereco) {
+		if(endereco == null) {
+			throw new NullPointerException("Endereco nao pode ser nulo.");
+		}
+		getEndereco().add(endereco);
+	}
+	
+	private List<Endereco> getEndereco(){
+		  //Comente esta condição para ver o erro tratado no console!
+		  if(endereco == null) {
+			  endereco = new ArrayList<Endereco>();
+			  }
+		 	 
+		  return endereco;
+	}
 
 	@Override
 	public int hashCode() {
@@ -69,4 +87,5 @@ public class Dev {
 		return Objects.equals(conteudosConcluidos, other.conteudosConcluidos)
 				&& Objects.equals(conteudosInscritos, other.conteudosInscritos) && Objects.equals(nome, other.nome);
 	}
+	
 }

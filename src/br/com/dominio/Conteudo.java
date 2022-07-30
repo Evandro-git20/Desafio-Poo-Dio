@@ -1,17 +1,14 @@
 package br.com.dominio;
 
 public abstract class Conteudo {
-	protected static final double XP_PADRAO = 20d;
 	
+	protected static final double XP_PADRAO = 10d;
 	private String titulo;
 	private String descricao;
-	
-	
-		
+			
 	public Conteudo() {
 
 	}
-
 
 	public String getTitulo() {
 		return titulo;
@@ -20,14 +17,12 @@ public abstract class Conteudo {
 		this.titulo = titulo;
 	}
 
-
 	public String getDescricao() {
 		return descricao;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
 
 	public abstract double calcularXp();
 }

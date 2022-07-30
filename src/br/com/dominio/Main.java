@@ -5,10 +5,12 @@ import java.time.LocalDate;
 public class Main {
 
 	public static void main(String[] args) {
+		
 		Curso curso1 = new Curso();
 		Curso curso2 = new Curso();
 		Mentoria mentoria = new Mentoria();
 		Bootcamp bootcamp = new Bootcamp();
+		Endereco endereco = new Endereco();
 		Dev dev1 = new Dev();
 		Dev dev2 = new Dev();
 		
@@ -18,7 +20,7 @@ public class Main {
 				
 		curso2.setTitulo(" curso javascript");
 		curso2.setDescricao(" descrição curso javascript");
-		curso2.setCargaHoraria(8);
+		curso2.setCargaHoraria(4);
 		
 		mentoria.setTitulo(" mentoria");
 		mentoria.setDescricao(" descrição mentoria");
@@ -36,12 +38,30 @@ public class Main {
 		dev2.setNome("João");
 		dev2.inscrever(bootcamp);
 		
-		System.out.println("Conteúdos Inscritos de Camila:"+dev1.getConteudosInscritos()+"\nConteúdos Inscritos de João:"+dev2.getConteudosInscritos());
+		System.out.println("Conteúdos Inscritos de Camila:"+dev1.getConteudosInscritos());
 		System.out.println("-");
 		dev1.progredir();
-		dev2.progredir();
-		System.out.println("Conteúdos Concluídos de Camila:"+dev1.getConteudosConcluidos()+"\nConteúdos Concluídos de João:"+dev2.getConteudosConcluidos());
-		System.out.println("XP de Camila: "+ dev1.calcularTotalXp()+"\nXP de João: "+dev2.calcularTotalXp());
+		dev1.progredir();
+		dev1.progredir();
+		System.out.println("Conteúdos Inscritos de Camila:"+dev1.getConteudosInscritos());
+		System.out.println("Conteúdos Concluídos de Camila:"+dev1.getConteudosConcluidos());
+		System.out.println("XP de Camila: "+ dev1.calcularTotalXp());
+		
+		System.out.println("\n------------------------------------------------------------");
+		
+		System.out.println("\nConteúdos Inscritos de Camila:"+dev2.getConteudosInscritos());
+		System.out.println("-");
+		dev2.progredir();		
+		System.out.println("Conteúdos Inscritos de Camila:"+dev2.getConteudosInscritos());
+		System.out.println("Conteúdos Concluídos de Camila:"+dev2.getConteudosConcluidos());
+		System.out.println("XP de Camila: "+ dev2.calcularTotalXp());
+		
+		try{
+			dev1.adiconarEndereco(endereco);
+			System.out.println("Endereço adicionado com sucesso!");
+		}catch(Exception e) {
+			System.out.println("Houve um erro! Endereço não pode ser nulo! "+"\n"+e.getMessage());
+		}
 	}
 
 }
